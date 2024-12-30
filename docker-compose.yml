@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  sample_microservice:
+    container_name: sample_microservice
+    image: sample_microservice
+    build:
+      context: ./services/js_levi_test
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    volumes:
+      - ./services/js_levi_test/:/opt/app/services/js_levi_test
