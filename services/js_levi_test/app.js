@@ -52,6 +52,9 @@ app.get('/', (req, res) => {
 })
 
 // API метод для вычисления расстояния Левенштейна
+/**
+ * @
+ */
 app.post('/api/levi', (req, res) => {
     const { str1, str2 } = req.body;
     if (!str1 || !str2) {

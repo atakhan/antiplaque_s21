@@ -13,3 +13,4 @@ services:
       - 3000:3000
     volumes:
       - ./services/js_levi_test/:/opt/app/services/js_levi_test
+      - /opt/app/services/js_levi_test/node_modules
