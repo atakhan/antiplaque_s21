@@ -5,12 +5,22 @@ services:
     container_name: sample_microservice
     image: sample_microservice
     build:
-      context: ./services/js_levi_test
+      context: ./services/sample_microservice
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
     ports:
       - 3000:3000
     volumes:
-      - ./services/js_levi_test/:/opt/app/services/js_levi_test
-      - /opt/app/services/js_levi_test/node_modules
+      - ./services/sample_microservice/:/opt/app/services/sample_microservice
+      - /opt/app/services/sample_microservice/node_modules
+  search_s21_projects_in_github:
+    container_name: search_s21_projects_in_github
+    image: search_s21_projects_in_github
+    build:
+      context: ./services/search_s21_projects_in_github
+      dockerfile: ./Dockerfile
+    ports:
+      - 3001:3001
+    volumes:
+      - ./services/search_s21_projects_in_github/:/opt/app/services/search_s21_projects_in_github
