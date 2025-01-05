@@ -1,19 +1,19 @@
 version: '3.4'
 
 services:
-  sample_microservice:
-    container_name: sample_microservice
-    image: sample_microservice
-    build:
-      context: ./services/sample_microservice
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
-    ports:
-      - 3000:3000
-    volumes:
-      - ./services/sample_microservice/:/opt/app/services/sample_microservice
-      - /opt/app/services/sample_microservice/node_modules
+  # sample_microservice:
+  #   container_name: sample_microservice
+  #   image: sample_microservice
+  #   build:
+  #     context: ./services/sample_microservice
+  #     dockerfile: ./Dockerfile
+  #   environment:
+  #     NODE_ENV: production
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./services/sample_microservice/:/opt/app/services/sample_microservice
+  #     - /opt/app/services/sample_microservice/node_modules
   search_s21_projects_in_github:
     container_name: search_s21_projects_in_github
     image: search_s21_projects_in_github
