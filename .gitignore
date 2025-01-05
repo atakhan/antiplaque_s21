@@ -1,2 +1,3 @@
 .vscode
+.DS_Store
 services/js_levi_test/node_modules
