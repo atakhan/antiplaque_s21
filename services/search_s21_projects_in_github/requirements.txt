@@ -2,3 +2,5 @@ fastapi
 uvicorn
 requests
 PyGithub
+sqlalchemy
+databases  # Для асинхронного доступа к базе данных

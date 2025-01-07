@@ -1,7 +1,41 @@
 version: '3.4'
 
+networks:
+  gitsearch:
+    driver: bridge
+
 services:
-  # sample_microservice:
+  search_s21_projects_in_github:
+    container_name: search_s21_projects_in_github
+    image: search_s21_projects_in_github
+    networks:
+      - gitsearch
+    build:
+      context: ./services/search_s21_projects_in_github
+      dockerfile: ./Dockerfile
+    ports:
+      - 3001:3001
+    volumes:
+      - ./services/search_s21_projects_in_github/:/opt/app/services/search_s21_projects_in_github
+
+  postgres: 
+    container_name: postgres_container
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: franchel
+      POSTGRES_DB: github_projects
+      POSTGRES_HOST_AUTH_METHOD: trust  # Позволяет подключаться без пароля
+    networks:
+      - gitsearch
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
+
+
+    # sample_microservice:
   #   container_name: sample_microservice
   #   image: sample_microservice
   #   build:
@@ -14,13 +48,3 @@ services:
   #   volumes:
   #     - ./services/sample_microservice/:/opt/app/services/sample_microservice
   #     - /opt/app/services/sample_microservice/node_modules
-  search_s21_projects_in_github:
-    container_name: search_s21_projects_in_github
-    image: search_s21_projects_in_github
-    build:
-      context: ./services/search_s21_projects_in_github
-      dockerfile: ./Dockerfile
-    ports:
-      - 3001:3001
-    volumes:
-      - ./services/search_s21_projects_in_github/:/opt/app/services/search_s21_projects_in_github
