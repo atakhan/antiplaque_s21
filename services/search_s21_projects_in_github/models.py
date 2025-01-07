@@ -12,23 +12,7 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 # Создание таблицы, если она не существует
-cur.execute("""
-CREATE TABLE IF NOT EXISTS search_parameters (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    full_name TEXT NOT NULL,
-    private BOOLEAN NOT NULL,
-    html_url VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    size INTEGER NOT NULL,
-    language VARCHAR(255) NOT NULL,
-    topics TEXT NOT NULL,
-    default_branch VARCHAR(256) NOT NULL,
-    created_at TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP NOT NULL,
-    downloaded BOOLEAN NOT NULL
-);
-""")
+cur.execute('SELECT * FROM "search_parameter";')
 
 # Параметры для вставки (пример данных)
 projects = [

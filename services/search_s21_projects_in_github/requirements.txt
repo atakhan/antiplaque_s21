@@ -1,6 +1,7 @@
 fastapi
-uvicorn
-requests
-PyGithub
-sqlalchemy
+uvicorn #запуск моего фастапи приложения
+requests #взаимодействие с другими апи
+PyGithub #хз надо лол
+sqlalchemy #библиотека для работы сбд
 databases  # Для асинхронного доступа к базе данных
+psycopg2-binary #Драйвер для подключения к PostgreSQL из Python.
