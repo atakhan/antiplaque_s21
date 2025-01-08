@@ -1,39 +1,41 @@
 version: '3.4'
 
-networks:
-  gitsearch:
-    driver: bridge
-
 services:
-  search_s21_projects_in_github:
-    container_name: search_s21_projects_in_github
-    image: search_s21_projects_in_github
+  github_search_app:
+    container_name: github_search_app
+    image: github_search_app
     networks:
-      - gitsearch
+      - github_search_net
+    depends_on:
+      - github_search_db
     build:
-      context: ./services/search_s21_projects_in_github
+      context: ./services/github_search
       dockerfile: ./Dockerfile
     ports:
       - 3001:3001
     volumes:
-      - ./services/search_s21_projects_in_github/:/opt/app/services/search_s21_projects_in_github
+      - ./services/github_search/:/opt/app/services/github_search
 
-  postgres: 
-    container_name: postgres_container
+  github_search_db: 
+    container_name: github_search_db
     image: postgres:latest
     environment:
       POSTGRES_USER: franchel
       POSTGRES_DB: github_projects
       POSTGRES_HOST_AUTH_METHOD: trust  # Позволяет подключаться без пароля
     networks:
-      - gitsearch
+      - github_search_net
     ports:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
 volumes:
   postgres_data:
 
+networks:
+  github_search_net:
+    driver: bridge
 
     # sample_microservice:
   #   container_name: sample_microservice
