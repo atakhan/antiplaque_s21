@@ -1,5 +1,9 @@
-all:
+rebuild:
+	docker-compose down --rmi all
 	docker-compose up --build
 
-clean:
+up:
+	docker-compose up --build
+
+down:
 	docker-compose down --rmi all

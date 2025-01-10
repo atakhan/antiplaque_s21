@@ -4,7 +4,7 @@
         <ul>
             <li v-for="item in items" :key="item.id">
                 {{ item.content }}
-                <button @click="approve(item.id)">Утвердить</button>
+                <button @click="approve(item.id)">Утвердить {{ item.id }}</button>
                 <button @click="block(item.id)">Заблокировать</button>
             </li>
         </ul>
@@ -24,7 +24,7 @@ export default {
     methods: {
         async fetchItems() {
             try {
-                const response = await fetch('/api/moderation');
+                const response = await fetch(`${process.env.VUE_APP_API_URL}/api/moderation`);
                 if (!response.ok) {
                     throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
                 }
@@ -35,7 +35,7 @@ export default {
         },
         async approve(id) {
             try {
-                const response = await fetch(`/api/moderation/approve/${id}`, { method: 'POST' });
+                const response = await fetch(`${process.env.VUE_APP_API_URL}/api/moderation/approve/${id}`, { method: 'POST' });
                 if (!response.ok) {
                     throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
                 }
@@ -46,7 +46,7 @@ export default {
         },
         async block(id) {
             try {
-                const response = await fetch(`/api/moderation/block/${id}`, { method: 'POST' });
+                const response = await fetch(`${process.env.VUE_APP_API_URL}/api/moderation/block/${id}`, { method: 'POST' });
                 if (!response.ok) {
                     throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
                 }

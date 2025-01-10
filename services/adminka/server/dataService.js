@@ -9,7 +9,7 @@ let data = [
 const getAllPosts = () => {
     return {
         data: data
-};
+    };
 };
 
 // Утверждение поста по ID

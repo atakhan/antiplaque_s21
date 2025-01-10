@@ -5,6 +5,7 @@ const { getAllPosts, approvePost, blockPost } = require('./dataService');
 // Обработка GET-запроса на корневой маршрут
 router.get('/', (req, res) => {
     const posts = getAllPosts();
+    console.log(posts);
     res.json(posts);
 });
 
