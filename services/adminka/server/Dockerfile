@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Указываем порт, который будет использоваться
-EXPOSE 5000
+EXPOSE 3000
 
 # Запускаем сервер
-CMD ["node", "server.js"]
+CMD ["nodemon", "server.js"]

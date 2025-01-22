@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 // Обработка POST-запроса для утверждения поста
-router.post('/approve/:id', (req, res) => {
+router.get('/approve/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const item = approvePost(id);
     if (item) {
@@ -18,6 +18,20 @@ router.post('/approve/:id', (req, res) => {
     } else {
         res.status(404).send('Item not found');
     }
+});
+
+// Обработка POST-запроса для утверждения поста
+router.post('/approve/:id', (req, res) => {
+    console.log("try to output approve req");
+    const id = parseInt(req.params.id); // Извлечение id из параметров
+    console.log(`ID: ${id}`); // Логирование id для отладки
+    // const id = parseInt(req.params.id);
+    // const item = approvePost(id);
+    // if (item) {
+    //     res.json(item);
+    // } else {
+    //     res.status(404).send('Item not found');
+    // }
 });
 
 // Обработка POST-запроса для блокировки поста
